@@ -18,7 +18,7 @@ public class Starter extends Application {
 		Parent rootPane = new ApplicationUI();
 		Scene myScene = new Scene(rootPane);
 
-		primaryStage.setTitle("AB2!");
+		primaryStage.setTitle("Arbeitsblatt (2)");
 		//	primaryStage.setHeight(HEIGHT);
 		primaryStage.setWidth(WIDTH);
 		primaryStage.setScene(myScene);
