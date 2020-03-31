@@ -1,17 +1,14 @@
-package ch.fhnw.oop2.module07.ab2;
+package ch.fhnw.oop2.module07.ab3;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.util.converter.NumberStringConverter;
 
 public class ApplicationUI extends VBox {
-	private Label label;
+	private TextField textField;
 	private Slider slider;
 
 	public ApplicationUI() {
@@ -21,9 +18,9 @@ public class ApplicationUI extends VBox {
 
 	private void initializeControls() {
 		slider = new Slider();
-		slider.valueProperty().addListener((observableValue, oldValue, newValue) -> label.setText(String.valueOf(newValue)));
-		label = new Label();
-
+		//slider.valueProperty().addListener((observableValue, oldValue, newValue) -> label.setText(String.valueOf(newValue)));
+		textField = new TextField();
+		textField.textProperty().bindBidirectional(slider.valueProperty(), new NumberStringConverter());
 	}
 
 	private void layoutControls() {
@@ -33,9 +30,8 @@ public class ApplicationUI extends VBox {
 		slider.setShowTickLabels(true);
 		slider.snapToTicksProperty().setValue(true);
 		slider.setValue(5);
-		getChildren().addAll(label, slider);
-		setSpacing(10);
-		setPadding(new Insets(10));
+		getChildren().addAll(textField, slider);
+		setPadding(new Insets(15));
 	}
 
 }
